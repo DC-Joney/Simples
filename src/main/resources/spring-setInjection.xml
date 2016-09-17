@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="exampleBean"
+            class="com.dc.core.spring.reference.setInjection.ExampleBean"
+           p:anotherBean="#{anotherBean}" >
+        <property name="yetAnotherBean">
+            <ref bean="yetAnotherBean"></ref>
+        </property>
+    </bean>
+
+    <bean id="anotherBean"
+                class="com.dc.core.spring.reference.setInjection.AnotherBean">
+    </bean>
+    <bean id="yetAnotherBean"
+          class="com.dc.core.spring.reference.setInjection.YetAnotherBean">
+    </bean>
+    <bean id="parentBean"
+                class="com.dc.core.spring.reference.setInjection.ParentBean">
+        <constructor-arg >
+            <ref bean="exampleBean"></ref>
+        </constructor-arg>
+        <constructor-arg >
+            <value type="int">26</value>
+        </constructor-arg>
+
+    </bean>
+    <bean id="exampleBean1"
+                class="com.dc.core.spring.reference.setInjection.ExampleBean"
+                factory-method="createBean"
+                c:anotherBean="#{anotherBean}" c:yetAnotherBean="#{yetAnotherBean}" c:i="16">
+
+    </bean>
+    <!--
+        获取的是ExampleBean的实例
+    -->
+    <bean id="exampleBean2"
+                class="com.dc.core.spring.reference.setInjection.ParentBean"
+                factory-method="getExampleBean"
+                c:yetAnotherBean-ref="yetAnotherBean" c:bean="#{anotherBean}">
+
+
+    </bean>
+    <!--<bean id="anotherBean2" class="com.dc.core.spring.reference.setInjection.AnotherBean">
+
+    </bean>
+    -->
+    <bean id="accountService" name="accountService" class="com.dc.core.spring.reference.setInjection.SimpleAccountService">
+        <!-- insert dependencies as required as here -->
+    </bean>
+    <!-- bean name is the same as the parent bean -->
+    <!-- notice how we refer to the parent bean -->
+    <bean id="accountService1"
+    class="org.springframework.aop.framework.ProxyFactoryBean" parent="accountService">
+    <property name="target">
+        <ref parent="accountService"/>
+    </property>
+    </bean>
+</beans>

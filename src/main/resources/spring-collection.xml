@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="user" class="com.dc.core.spring.reference.collection.dao.User"
+          p:userName="Joney" p:password="123456"></bean>
+    <bean id="collection"
+                class="com.dc.core.spring.reference.collection.ListCollection"
+                   p:name="张三" p:number="16">
+        <property name="list">
+            <list>
+                <ref bean="user"></ref>
+                <bean class="com.dc.core.spring.reference.collection.dao.User"
+                        p:userName="name" p:password="123456"></bean>
+            </list>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="Luna">15945835@qq.com</prop>
+                <prop key="Joney">16859256@qq.com</prop>
+            </props>
+        </property>
+        <property name="set">
+            <set merge="true">
+                <value>asasa</value>
+                <ref bean="user"></ref>
+            </set>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="123" value="456"></entry>
+                <entry key="user" value-ref="user"></entry>
+                <entry key-ref="user" value="12345"></entry>
+<<<<<<< HEAD
+                <entry  key="456" value-type="java.lang.String">
+                    <value>Admin</value>
+=======
+                <entry  key="456">
+                    <value type="com.dc.core.spring.reference.collection.dao.User">#{user}</value>
+>>>>>>> 1536c34840cc9d744b3e02696275c07f18f18d09
+                </entry>
+                <entry key="123456" value-type="java.lang.String">
+                    <value>user</value>
+                </entry>
+            </map>
+        </property>
+
+    </bean>
+
+</beans>

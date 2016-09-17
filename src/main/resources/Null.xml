@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="aNull"
+            class="com.dc.core.spring.reference.lazyAndNullAndDepednsOn.Null">
+            <property name="address">
+                <null/>
+            </property>
+    </bean>
+    <!--可以为depends-on属性的值提供多个名字，使用逗号，空格或分号分割：-->
+    <bean id="computer"
+                class="com.dc.core.spring.reference.lazyAndNullAndDepednsOn.Computer"
+                depends-on="huaWei,lenovo1,pc"></bean>
+    <bean id="pc"
+                class="com.dc.core.spring.reference.lazyAndNullAndDepednsOn.PC"></bean>
+    <bean id="lenovo1"
+                class="com.dc.core.spring.reference.lazyAndNullAndDepednsOn.Lenovo"></bean>
+    <bean id="huaWei"
+                class="com.dc.core.spring.reference.lazyAndNullAndDepednsOn.HuaWei"></bean>
+    <!--depends-on属性能够同时指定初始化时依赖和通信销毁时依赖，这只能运用在单例bean的情况中。
+    依赖的bean在给定的bean销毁之前被销毁。因此，depends-on也能够控制关闭的顺序。
+    （译者注，初始化的时候依赖的对象先初始化才能注入，销毁时需要依赖的对象先销毁才能解绑）-->
+</beans>
