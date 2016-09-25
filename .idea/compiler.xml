@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <option name="BUILD_PROCESS_HEAP_SIZE" value="1500" />
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="1000" />
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
@@ -23,11 +23,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="Demo" />
+        <module name="team" />
+        <module name="view" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="Demo" target="1.8" />
+      <module name="team" target="1.8" />
+      <module name="view" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

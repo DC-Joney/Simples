@@ -1,0 +1,14 @@
+.Ctrl＋P，可以显示参数信息
+CTRL+ALT+I 自动缩进
+Ctrl+J可以查看所有模板
+.Ctrl＋Alt＋T可以把代码包在一块内，例如try/catch
+ ctrl o 重写父类方法
+ Ctrl+Alt+O，格式化代码Ctrl+Alt+L
+Ctrl+Alt+T创建单元测试用例。
+Ctrl+Shift+V粘贴很早以前拷贝过的
+自动完成：Ctrl+Shift+Enter
+重构一切：Ctrl+Shift+Alt+T
+Ctrl+I 实现接口方法
+智能补全：Ctrl+Shift+Space
+Ctrl+N/Ctrl+Shift+N可以打开类或资源
+.Ctrl＋Q可以看JavaDoc

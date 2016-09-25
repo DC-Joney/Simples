@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="studentBean"
+            class="com.dc.core.spring.reference.constructor.StudentBean"
+            c:s1="#{student1}" c:s2="#{student2}">
+   <!--
+        <constructor-arg type="com.dc.core.spring.reference.constructor.Student1" value="#{student1}"></constructor-arg>
+        <constructor-arg type="com.dc.core.spring.reference.constructor.Student2" value="#{student2}"></constructor-arg>
+    -->
+</bean>
+    <bean id="student1"
+            class="com.dc.core.spring.reference.constructor.Student1"
+            c:age='"56"' c:studentId="59">
+        <!--
+         <constructor-arg type="int" value="59"></constructor-arg>
+         <constructor-arg type="java.lang.String" value='"456"'></constructor-arg>
+
+          <constructor-arg type="java.lang.String" value="'56'"></constructor-arg>-->
+
+    </bean>
+    <bean id="student2"
+                class="com.dc.core.spring.reference.constructor.Student2"
+                    c:name="" c:age="">
+
+    </bean>
+
+</beans>

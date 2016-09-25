@@ -1,6 +1,8 @@
 package com.dc.core.spring.test;
 
 import com.dc.core.spring.reference.FactoryImpl.dao.FactoryDao;
+import com.dc.core.spring.reference.annotation.AnnotaionBean;
+import com.dc.core.spring.reference.annotation.MyService;
 import com.dc.core.spring.reference.collection.ListCollection;
 import com.dc.core.spring.reference.collection.dao.User;
 import com.dc.core.spring.reference.constructor.Student1;
@@ -16,6 +18,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -30,10 +33,10 @@ public class ControllerServiceTest {
     Logger log = LogManager.getLogger(ControllerServiceTest.class);
 
     //    @Autowired
-//    @Qualifier("service")
-//    private ControllerService service;
-//    public void setControllerService( ControllerService service){
-//        this.service=service;
+//    @Qualifier("controller")
+//    private ControllerService controller;
+//    public void setControllerService( ControllerService controller){
+//        this.controller=controller;
 //
 //    }
     @Ignore
@@ -42,7 +45,7 @@ public class ControllerServiceTest {
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"spring-StaticFactory.xml"});
         Assert.assertNotNull(ctx.getBean("service"));
-        //System.out.println(service==null);
+        //System.out.println(controller==null);
     }
 
     @Ignore
@@ -184,7 +187,15 @@ public class ControllerServiceTest {
         Assert.assertNotNull(context.getBean(Computer.class));
         Assert.assertNotNull(context.getBean(Lenovo.class));
     }
-
+    @Test
+    public  void  getAnnotationBean(){
+        ApplicationContext context=new AnnotationConfigApplicationContext(AnnotaionBean.class);
+        MyService myService= (MyService) context.getBean("service1");
+        Assert.assertNotNull(myService);
+        AnnotaionBean bean=context.getBean(AnnotaionBean.class);
+      //  bean.s
+        log.info(bean.getNumber());
+    }
     }
 
 
